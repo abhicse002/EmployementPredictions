@@ -1,3 +1,4 @@
+import time
 import pandas as pd
 import numpy as np
 import matplotlib as plt
@@ -9,6 +10,10 @@ st.sidebar.title("Subscribe to our Job Notifications.")
 st.sidebar.write("Will keep you posted about new Open Positions.")
 sidebar_ip = st.sidebar.text_input("Enter Email")
 
+if sidebar_ip:
+    with st.spinner('Loading...'):
+        time.sleep(2)  # Simulate some process
+    st.success(f'Congratulations on Subscribing, please checking your email {sidebar_ip}nfor latest updates!')  # Display a success message
 
 tab1, tab2, tab3, tab4 = st.tabs(["Fill Form", "Charts", "Analysis", "About"])
 with tab1:
@@ -42,4 +47,16 @@ with st.container(border=True):
     st.write("Manages Sections of Page")
 
 
-# Empty Placeholders
+# Empty Placeholders, with Popover
+placeholder = st.empty()
+placeholder.write("Empty placeholder, for dynamic content.")
+
+if st.button("Update Placeolder", help="Click here to know more."):
+    placeholder.write("Updated Placeholder.")
+
+# Expander
+with st.expander("Expand to see mpre details about Opening Position."):
+    st.write("Java Developer")
+    st.write("Python Developer")
+    st.write("AWS Cloud Engineer")
+
